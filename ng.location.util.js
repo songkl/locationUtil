@@ -39,21 +39,21 @@
     function transformFromWGSToGCJ(wgLoc)
     {
         var mgLoc = {};
-        if (outOfChina(wgLoc.lat, wgLoc.lng))
+        if (outOfChina(wgLoc.latitude, wgLoc.longitude))
         {
             mgLoc = wgLoc;
             return mgLoc;
         }
-        var dLat = transformLat(wgLoc.lng - 105.0, wgLoc.lat - 35.0);
-        var dLon = transformLon(wgLoc.lng - 105.0, wgLoc.lat - 35.0);
-        var radLat = wgLoc.lat / 180.0 * pi;
+        var dLat = transformLat(wgLoc.longitude - 105.0, wgLoc.latitude - 35.0);
+        var dLon = transformLon(wgLoc.longitude - 105.0, wgLoc.latitude - 35.0);
+        var radLat = wgLoc.latitude / 180.0 * pi;
         var magic = Math.sin(radLat);
         magic = 1 - ee * magic * magic;
         var sqrtMagic = Math.sqrt(magic);
         dLat = (dLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * pi);
         dLon = (dLon * 180.0) / (a / sqrtMagic * Math.cos(radLat) * pi);
-        mgLoc.lat = wgLoc.lat + dLat;
-        mgLoc.lng = wgLoc.lng + dLon;
+        mgLoc.latitude = wgLoc.latitude + dLat;
+        mgLoc.longitude = wgLoc.longitude + dLon;
 
         return mgLoc;
     }
@@ -65,7 +65,7 @@
     const x_pi = 3.14159265358979324 * 3000.0 / 180.0;
     function bd_encrypt(gcLoc)
     {
-        var x = gcLoc.lng, y = gcLoc.lat;
+        var x = gcLoc.longitude, y = gcLoc.latitude;
         var z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * x_pi);
         var theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * x_pi);
         return LocationMake(z * Math.cos(theta) + 0.0065, z * Math.sin(theta) + 0.006);
@@ -77,12 +77,11 @@
     ///
     function bd_decrypt(bdLoc)
     {
-        var x = bdLoc.lng - 0.0065, y = bdLoc.lat - 0.006;
+        var x = bdLoc.longitude - 0.0065, y = bdLoc.latitude - 0.006;
         var z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * x_pi);
         var theta = atan2(y, x) - 0.000003 * Math.cos(x * x_pi);
         return LocationMake(z * Math.cos(theta), z * Math.sin(theta));
     }
-
 
     return {
       BD09_2_GCJ02 : bd_decrypt,
