@@ -1,0 +1,23 @@
+{
+  "name": "locationUtil",
+  "version":"0.0.1",
+  "main": "dist/locationUtil.js",
+  "homepage": "https://github.com/songkl/locationUtil",
+  "authors": [
+    "songkl <skl@songkl.com>"
+  ],
+  "description": "",
+  "keywords": [
+    "location",
+    "convert"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
