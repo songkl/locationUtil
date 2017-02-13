@@ -2,9 +2,9 @@
   'use strict';
   angular.module('ngLocationUtil',[]).service('ngLocationUtil', function() {
 
-    const pi = 3.14159265358979324;
-    const a = 6378245.0;
-    const ee = 0.00669342162296594323;
+    var pi = 3.14159265358979324;
+    var a = 6378245.0;
+    var ee = 0.00669342162296594323;
 
     function outOfChina(lat,lon)
     {

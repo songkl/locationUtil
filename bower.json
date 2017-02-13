@@ -1,6 +1,6 @@
 {
   "name": "locationUtil",
-  "version":"0.0.2",
+  "version":"0.0.3",
   "main": "dist/ng.location.util.js",
   "homepage": "https://github.com/songkl/locationUtil",
   "authors": [
