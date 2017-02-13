@@ -62,7 +62,7 @@
     ///  GCJ-02 坐标转换成 BD-09 坐标
     ///
 
-    const x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+    var x_pi = 3.14159265358979324 * 3000.0 / 180.0;
     function bd_encrypt(gcLoc)
     {
         var x = gcLoc.longitude, y = gcLoc.latitude;
